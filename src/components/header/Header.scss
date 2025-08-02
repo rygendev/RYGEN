@@ -1,0 +1,117 @@
+.glass-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1rem 2rem;
+  color: white;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .nav {
+    display: flex;
+    gap: 2rem;
+
+    a {
+      position: relative;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: white;
+      overflow: hidden;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+
+      // Hover shimmer
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transform: skewX(-25deg);
+        transition: left 0.5s;
+        z-index: 1;
+      }
+
+      &:hover::before {
+        left: 125%;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+      }
+
+      &.active {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        position: relative;
+        z-index: 2;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 140%;
+          height: 140%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          pointer-events: none;
+          background-image:
+            radial-gradient(circle, white 2px, transparent 2px),
+            radial-gradient(circle, white 1.5px, transparent 1.5px),
+            radial-gradient(circle, white 1px, transparent 1px);
+          background-repeat: no-repeat;
+          background-size: 6px 6px, 4px 4px, 3px 3px;
+          background-position:
+            50% 0%,
+            100% 50%,
+            50% 100%;
+          animation: orbitStars 4s linear infinite;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+// Orbiting star sparkle
+@keyframes orbitStars {
+  0% {
+    background-position:
+      50% 0%,
+      100% 50%,
+      50% 100%;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    background-position:
+      50% 0%,
+      100% 50%,
+      50% 100%;
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
