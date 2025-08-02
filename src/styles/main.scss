@@ -1,0 +1,38 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-section {
+  padding: 2rem;
+  flex: 1;
+}
+
+
+.video-background-wrapper {
+
+  .background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .video-overlay {
+    position: relative;
+    z-index: 1;
+    // min-height: 200vh;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
